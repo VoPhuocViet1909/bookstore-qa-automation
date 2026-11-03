@@ -1,0 +1,13 @@
+# Test
+node_modules/
+test-results/
+playwright-report/
+test-data/
+*.bak
+_tmp/
+.env
+
+# Hệ thống được test (sut/)
+sut/backend/target/
+sut/frontend/.next/
+sut/frontend/node_modules/

@@ -1,0 +1,21 @@
+{
+  "name": "bookstore-qa-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API + E2E test automation cho NotFound Bookstore (Playwright + TypeScript)",
+  "scripts": {
+    "test": "playwright test",
+    "test:api": "playwright test --project=api",
+    "test:e2e": "playwright test --project=e2e",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:security": "playwright test --grep @security",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "seed:sample": "node scripts/seed-sample-data.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^20.11.24",
+    "typescript": "^5.4.0"
+  }
+}

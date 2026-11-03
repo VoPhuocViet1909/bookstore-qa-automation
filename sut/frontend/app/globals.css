@@ -1,0 +1,231 @@
+/* Updated theme for Vietnamese bookstore with warm, elegant colors */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.98 0.01 70);
+  --foreground: oklch(0.2 0.02 45);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 45);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 45);
+  --primary: oklch(0.4 0.15 40);
+  --primary-foreground: oklch(0.98 0.01 70);
+  --secondary: oklch(0.88 0.08 60);
+  --secondary-foreground: oklch(0.2 0.02 45);
+  --muted: oklch(0.92 0.02 70);
+  --muted-foreground: oklch(0.5 0.05 50);
+  --accent: oklch(0.55 0.18 35);
+  --accent-foreground: oklch(0.98 0.01 70);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.02 70);
+  --input: oklch(0.95 0.01 70);
+  --ring: oklch(0.4 0.15 40);
+  --chart-1: oklch(0.4 0.15 40);
+  --chart-2: oklch(0.55 0.18 35);
+  --chart-3: oklch(0.7 0.12 60);
+  --chart-4: oklch(0.6 0.15 30);
+  --chart-5: oklch(0.75 0.1 50);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: oklch(0.15 0.01 45);
+  --foreground: oklch(0.95 0.01 70);
+  --card: oklch(0.22 0.02 45);
+  --card-foreground: oklch(0.95 0.01 70);
+  --popover: oklch(0.22 0.02 45);
+  --popover-foreground: oklch(0.95 0.01 70);
+  --primary: oklch(0.7 0.15 40);
+  --primary-foreground: oklch(0.15 0.01 45);
+  --secondary: oklch(0.35 0.08 60);
+  --secondary-foreground: oklch(0.95 0.01 70);
+  --muted: oklch(0.32 0.02 70);
+  --muted-foreground: oklch(0.7 0.05 50);
+  --accent: oklch(0.75 0.18 35);
+  --accent-foreground: oklch(0.15 0.01 45);
+  --destructive: oklch(0.596 0.194 25.331);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.32 0.02 70);
+  --input: oklch(0.28 0.01 70);
+  --ring: oklch(0.7 0.15 40);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@media print {
+  @page {
+    margin: 2cm;
+    size: auto;
+  }
+
+  /* Hide non-printable elements */
+  header,
+  footer,
+  aside,
+  button,
+  .no-print,
+  [role="dialog"] {
+    display: none !important;
+  }
+
+  /* Reset layout for print */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Ensure containers are full width */
+  .container,
+  .max-w-4xl,
+  .max-w-7xl {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Improve table/grid readability */
+  .grid {
+    display: block !important;
+  }
+
+  .col-span-1,
+  .col-span-2,
+  .col-span-3,
+  .lg\:col-span-1,
+  .lg\:col-span-2,
+  .lg\:col-span-3 {
+    width: 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  /* Borders for definition */
+  .border,
+  .border-b {
+    border-color: #000 !important;
+  }
+
+  /* Typography overrides */
+  h1 {
+    font-size: 24pt !important;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 18pt !important;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid black;
+    padding-bottom: 0.25rem;
+  }
+
+  p {
+    margin-bottom: 0.25rem;
+  }
+
+  /* Ensure card backgrounds don't interfere */
+  .bg-card,
+  .bg-muted,
+  .bg-muted\/50 {
+    background: none !important;
+    border: none !important;
+  }
+
+  /* Show print-only elements if any */
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* Fallback colors for PDF generation to avoid html2canvas oklch/lab errors */
+body.safe-colors,
+.safe-colors {
+  --background: #ffffff !important;
+  --foreground: #000000 !important;
+  --card: #ffffff !important;
+  --card-foreground: #000000 !important;
+  --popover: #ffffff !important;
+  --popover-foreground: #000000 !important;
+  --primary: #000000 !important;
+  --primary-foreground: #ffffff !important;
+  --secondary: #f0f0f0 !important;
+  --secondary-foreground: #000000 !important;
+  --muted: #f5f5f5 !important;
+  --muted-foreground: #666666 !important;
+  --accent: #f0f0f0 !important;
+  --accent-foreground: #000000 !important;
+  --destructive: #ff0000 !important;
+  --destructive-foreground: #ffffff !important;
+  --border: #e0e0e0 !important;
+  --input: #e0e0e0 !important;
+  --ring: #000000 !important;
+
+  /* Force simple colors */
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Ensure all children inherit safe colors for borders/backgrounds where variables are used */
+body.safe-colors *,
+.safe-colors * {
+  border-color: #000000 !important;
+}

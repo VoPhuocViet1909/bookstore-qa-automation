@@ -1,0 +1,183 @@
+/* CKEditor 5 Styles - From App.css */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@media print {
+	body {
+		margin: 0 !important;
+	}
+}
+
+:root {
+	--ck-content-font-family: 'Lato';
+	--ck-sidebar-width: 280px;
+	--ck-editor-height: calc(100vh - 270px);
+}
+
+.main-container {
+	font-family: var(--ck-content-font-family);
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.main-container .presence {
+	margin-bottom: 8px;
+}
+
+/* Editor wrapper - contains editor + AI sidebar */
+.editor-container__editor-wrapper {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	flex: 1;
+	min-height: 0;
+}
+
+.editor-container_document-editor {
+	border: 1px solid var(--ck-color-base-border);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.editor-container_document-editor .editor-container__toolbar {
+	display: flex;
+	position: relative;
+	box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.078);
+}
+
+.editor-container_document-editor .editor-container__toolbar > .ck.ck-toolbar {
+	flex-grow: 1;
+	width: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+}
+
+.editor-container_document-editor .editor-container__menu-bar > .ck.ck-menu-bar {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+}
+
+/* Inner wrapper for editor + AI chat - HORIZONTAL LAYOUT */
+.editor-container_document-editor .editor-container__editor-wrapper {
+	max-height: var(--ck-editor-height);
+	min-height: var(--ck-editor-height);
+	overflow: hidden;
+	background: var(--ck-color-base-foreground);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: stretch;
+}
+
+/* Editor area - takes remaining space, shrinks when AI is open */
+.editor-container_document-editor .editor-container__editor {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: block;
+	padding: 20px;
+	overflow-y: auto;
+}
+
+/* The actual editable area - FULL WIDTH FIXED */
+.editor-container_document-editor .editor-container__editor .ck.ck-editor__editable {
+	box-sizing: border-box;
+	width: 100% !important;
+	min-width: 100% !important;
+	max-width: 100% !important;
+	min-height: calc(var(--ck-editor-height) - 40px);
+	height: fit-content;
+	padding: 40px 60px;
+	border: 1px hsl(0, 0%, 82.7%) solid;
+	background: hsl(0, 0%, 100%);
+	box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.078);
+}
+
+.editor-container_include-annotations .editor-container__editor .ck.ck-editor__editable {
+	margin-right: 0;
+}
+
+.editor-container__sidebar {
+	min-width: var(--ck-sidebar-width);
+	max-width: var(--ck-sidebar-width);
+	margin-top: 28px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.editor-container__sidebar_narrow {
+	max-width: calc(var(--ck-sidebar-width) * 0.2);
+	min-width: calc(var(--ck-sidebar-width) * 0.2);
+}
+
+.editor-container__editable-wrapper {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	flex: 1;
+}
+
+/* AI Chat Sidebar - RESIZABLE */
+.editor-container__sidebar_ckeditor-ai {
+	margin: 0;
+	width: var(--ck-sidebar-width);
+	min-width: 350px;
+	max-width: 500px;
+	flex-shrink: 0;
+	height: var(--ck-editor-height);
+	border-left: 1px solid var(--ck-color-base-border);
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	resize: horizontal;
+	overflow: auto;
+	direction: rtl; /* Makes resize handle appear on left side */
+}
+
+.editor-container__sidebar_ckeditor-ai > * {
+	direction: ltr; /* Reset direction for content */
+}
+
+.editor-container__sidebar_ckeditor-ai > .ck.ck-tabs.ck-ai-tabs {
+	height: 100%;
+	min-height: 100%;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 0;
+	flex: 1;
+}
+
+.editor-container__sidebar_ckeditor-ai:has(.ck-tabs.ck-hidden) {
+	max-width: 0;
+	min-width: 0;
+	border-left: none;
+	overflow: hidden;
+}
+
+.editor-container_contains-wrapper .editor-container__editor-wrapper {
+	height: 100%;
+}
+
+.editor_container__word-count .ck-word-count {
+	color: var(--ck-color-text);
+	display: flex;
+	height: 20px;
+	gap: var(--ck-spacing-small);
+	justify-content: flex-end;
+	font-size: var(--ck-font-size-base);
+	line-height: var(--ck-line-height-base);
+	font-family: var(--ck-font-face);
+	padding: var(--ck-spacing-small) var(--ck-spacing-standard);
+}
+
+.editor-container_include-word-count.editor-container_document-editor .editor_container__word-count {
+	border-top: 1px solid var(--ck-color-base-border);
+}

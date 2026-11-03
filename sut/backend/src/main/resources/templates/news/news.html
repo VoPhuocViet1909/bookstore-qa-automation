@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Article Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .news-article {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .news-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .news-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .news-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Table of Contents */
+        .toc-container {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px;
+            border-radius: 4px;
+        }
+
+        .toc-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+
+        .toc-list a {
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .toc-list a:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .toc-level-2 {
+            padding-left: 0;
+        }
+
+        .toc-level-3 {
+            padding-left: 20px;
+            font-size: 0.9rem;
+        }
+
+        .toc-level-4 {
+            padding-left: 40px;
+            font-size: 0.85rem;
+        }
+
+        /* Content */
+        .news-content {
+            padding: 30px;
+        }
+
+        .news-content h2 {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .news-content h3 {
+            font-size: 1.4rem;
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .news-content h4 {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .news-content p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .news-content a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #667eea;
+            transition: all 0.3s;
+        }
+
+        .news-content a:hover {
+            color: #764ba2;
+            border-bottom-style: solid;
+        }
+
+        .news-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .news-content ul, .news-content ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .news-content li {
+            margin-bottom: 8px;
+        }
+
+        .news-content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Images Gallery */
+        .images-gallery {
+            padding: 30px;
+            background: #fafafa;
+        }
+
+        .gallery-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            padding: 15px;
+            background: white;
+        }
+
+        .gallery-caption .alt {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .gallery-caption .caption {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Metadata Info */
+        .metadata-info {
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .metadata-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .links-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .link-badge {
+            padding: 8px 15px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .link-badge:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .link-badge.book {
+            background: #28a745;
+        }
+
+        .link-badge.product {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .link-badge.internal {
+            background: #17a2b8;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: #764ba2;
+            transform: translateY(-3px);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="news-article">
+        <!-- Header -->
+        <div class="news-header">
+            <h1 class="news-title" id="news-title">Loading...</h1>
+            <div class="news-meta">
+                <span>📅 <span id="news-date">-</span></span>
+                <span>✍️ <span id="news-author">-</span></span>
+                <span>🏷️ <span id="news-status">-</span></span>
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc-container" id="toc-container" style="display: none;">
+            <div class="toc-title">
+                📋 Table of Contents
+            </div>
+            <ul class="toc-list" id="toc-list"></ul>
+        </div>
+
+        <!-- Content -->
+        <div class="news-content" id="news-content">
+            <p>Loading content...</p>
+        </div>
+
+        <!-- Images Gallery -->
+        <div class="images-gallery" id="images-gallery" style="display: none;">
+            <h3 class="gallery-title">📸 Image Gallery</h3>
+            <div class="gallery-grid" id="gallery-grid"></div>
+        </div>
+
+        <!-- Metadata Links -->
+        <div class="metadata-info" id="metadata-links" style="display: none;">
+            <h3 class="metadata-title">🔗 Related Links</h3>
+            <div class="links-list" id="links-list"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+<script>
+    // Configuration
+    const API_BASE_URL = 'http://3.26.33.103:8080/api';
+    const NEWS_ID = '22222222-2222-2222-2222-222222222222'; // Thay bằng ID thật
+
+    // Fetch news data from API
+    async function fetchNewsData() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/news/${NEWS_ID}`);
+            if (!response.ok) throw new Error('Failed to fetch news');
+
+            const data = await response.json();
+            renderNews(data.result);
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('news-content').innerHTML =
+                `<p style="color: red;">Error loading news: ${error.message}</p>`;
+        }
+    }
+
+    // Render news to HTML
+    function renderNews(news) {
+        // Title & Meta
+        document.getElementById('news-title').textContent = news.title;
+        document.getElementById('news-date').textContent = formatDate(news.createdAt);
+        document.getElementById('news-author').textContent = news.authorName;
+        document.getElementById('news-status').textContent = news.status;
+
+        // Content
+        document.getElementById('news-content').innerHTML = news.content;
+
+
+        // Table of Contents
+        if (news.metadata && news.metadata.sections && news.metadata.sections.length > 0) {
+            renderTableOfContents(news.metadata.sections);
+        }
+
+        // Images Gallery
+        if (news.images && news.images.length > 0) {
+            renderImagesGallery(news.images);
+        }
+
+        // Links
+        if (news.metadata && news.metadata.links && news.metadata.links.length > 0) {
+            renderLinks(news.metadata.links);
+        }
+    }
+
+    // Render Table of Contents
+    function renderTableOfContents(sections) {
+        const tocList = document.getElementById('toc-list');
+        const tocContainer = document.getElementById('toc-container');
+
+        tocList.innerHTML = sections.map(section => `
+                <li class="toc-level-${section.level}">
+                    <a href="#${section.id}">${section.title}</a>
+                </li>
+            `).join('');
+
+        tocContainer.style.display = 'block';
+    }
+
+    // Render Images Gallery
+    function renderImagesGallery(images) {
+        const galleryGrid = document.getElementById('gallery-grid');
+        const gallerySection = document.getElementById('images-gallery');
+
+        galleryGrid.innerHTML = images.map(img => `
+                <div class="gallery-item">
+                    <img src="${img.url}" alt="${img.alt || 'Image'}">
+                    <div class="gallery-caption">
+                        <div class="alt">${img.alt || 'Untitled'}</div>
+                        <div class="caption">${img.caption || ''}</div>
+                    </div>
+                </div>
+            `).join('');
+
+        gallerySection.style.display = 'block';
+    }
+
+    // Render Links
+    function renderLinks(links) {
+        const linksList = document.getElementById('links-list');
+        const linksSection = document.getElementById('metadata-links');
+
+        linksList.innerHTML = links.map(link => `
+                <a href="${link.url}" class="link-badge ${link.type}">
+                    ${link.type === 'book' ? '📚' : link.type === 'product' ? '🛒' : '🔗'}
+                    ${link.text}
+                </a>
+            `).join('');
+
+        linksSection.style.display = 'block';
+    }
+
+    // Format date
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+
+    // Smooth scroll to section
+    document.addEventListener('click', (e) => {
+        if (e.target.matches('.toc-list a')) {
+            e.preventDefault();
+            const targetId = e.target.getAttribute('href').slice(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+
+    // Back to top button
+    window.addEventListener('scroll', () => {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Load news on page load
+    fetchNewsData();
+</script>
+</body>
+</html>

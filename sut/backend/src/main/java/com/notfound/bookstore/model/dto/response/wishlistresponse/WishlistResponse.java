@@ -1,0 +1,22 @@
+package com.notfound.bookstore.model.dto.response.wishlistresponse;
+
+import com.notfound.bookstore.model.dto.response.bookresponse.BookSummaryResponse;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class WishlistResponse {
+    UUID wishlistId;
+    UUID userId;
+    LocalDateTime createdAt;
+    List<BookSummaryResponse> books;
+}

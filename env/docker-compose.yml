@@ -1,0 +1,64 @@
+# Môi trường test local: MySQL + Redis + Mailpit + Backend (Spring Boot, Java 21)
+# Chạy:   docker compose up -d --build      (tại thư mục bookstore-qa/env)
+# Dừng:   docker compose down               (thêm -v để xóa sạch database)
+name: bookstore-test
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: bookstore
+      MYSQL_USER: bookstore
+      MYSQL_PASSWORD: bookstore123
+      TZ: Asia/Ho_Chi_Minh
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3307:3306"          # mở DB bằng DBeaver/Workbench: localhost:3307
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot123"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  redis:
+    image: redis:7-alpine
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "8025:8025"          # xem email OTP/xác thực: http://localhost:8025
+
+  backend:
+    build:
+      context: ../sut/backend   # ban backend moi, khop voi frontend trong sut/
+      dockerfile_inline: |
+        FROM maven:3.9-eclipse-temurin-21 AS build
+        WORKDIR /src
+        COPY pom.xml .
+        RUN mvn -B -q dependency:go-offline || true
+        COPY src ./src
+        RUN mvn -B -q -DskipTests package
+        FROM eclipse-temurin:21-jre
+        WORKDIR /app
+        COPY --from=build /src/target/*.jar app.jar
+        EXPOSE 8080
+        ENTRYPOINT ["java", "-jar", "app.jar"]
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      - ./application.properties:/app/config/application.properties:ro
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      mailpit:
+        condition: service_started
+
+volumes:
+  mysql-data:

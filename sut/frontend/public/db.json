@@ -1,0 +1,380 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "nguyenvan",
+      "email": "nguyenvan@example.com",
+      "password": "pass123",
+      "role": "CUSTOMER",
+      "fullName": "Nguyễn Văn A",
+      "phone": "0912345678",
+      "address": "123 Nguyễn Huệ, Quận 1, TP.HCM"
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "email": "admin@bookstore.com",
+      "password": "admin123",
+      "role": "ADMIN",
+      "fullName": "Trần Quản Trị",
+      "phone": "0987654321",
+      "address": "456 Tôn Đức Thắng, Quận 1, TP.HCM"
+    },
+    {
+      "id": 3,
+      "username": "customer2",
+      "email": "customer2@example.com",
+      "password": "pass456",
+      "role": "CUSTOMER",
+      "fullName": "Phạm Thị B",
+      "phone": "0923456789",
+      "address": "789 Lê Lợi, Quận 1, TP.HCM"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Văn học",
+      "description": "Sách văn học Việt Nam và thế giới"
+    },
+    {
+      "id": 2,
+      "name": "Kinh tế",
+      "description": "Sách về kinh tế, quản lý kinh doanh"
+    },
+    {
+      "id": 3,
+      "name": "Tâm lý học",
+      "description": "Sách về tâm lý và phát triển bản thân"
+    },
+    {
+      "id": 4,
+      "name": "Kỹ năng",
+      "description": "Sách về kỹ năng sống và công việc"
+    },
+    {
+      "id": 5,
+      "name": "Lịch sử",
+      "description": "Sách về lịch sử và văn hóa"
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Nguyễn Nhật Ánh",
+      "biography": "Nhà văn nổi tiếng người Việt Nam, tác giả của 'Những đứa con lạc'"
+    },
+    {
+      "id": 2,
+      "name": "Trương Văn Cơ",
+      "biography": "Nhà kinh tế học, tác giả của 'Kinh tế vi mô cơ bản'"
+    },
+    {
+      "id": 3,
+      "name": "Dale Carnegie",
+      "biography": "Tác giả 'Cách Đắc Nhân Tâm', cuốn sách nổi tiếng thế giới"
+    },
+    {
+      "id": 4,
+      "name": "Marie Kondo",
+      "biography": "Chuyên gia tổ chức cuộc sống, tác giả 'Phương pháp KonMari'"
+    },
+    {
+      "id": 5,
+      "name": "Dương Tự Huy",
+      "biography": "Nhà văn lịch sử Việt Nam"
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "Những đứa con lạc",
+      "isbn": "978-1234567890",
+      "price": 89000,
+      "discountPrice": 69000,
+      "stockQuantity": 50,
+      "publishDate": "2020-05-15",
+      "description": "Tiểu thuyết kinh điển của Nguyễn Nhật Ánh về cuộc sống tuổi thơ",
+      "status": "AVAILABLE",
+      "imageUrl": "/psychology-book.jpg",
+      "categoryId": 1,
+      "authorId": 1,
+      "rating": 4.8,
+      "reviews": 234
+    },
+    {
+      "id": 2,
+      "title": "Cách Đắc Nhân Tâm",
+      "isbn": "978-0987654321",
+      "price": 99000,
+      "discountPrice": 79000,
+      "stockQuantity": 120,
+      "publishDate": "2019-03-20",
+      "description": "Cuốn sách nổi tiếng thế giới về kỹ năng giao tiếp và phát triển bản thân",
+      "status": "AVAILABLE",
+      "imageUrl": "/abstract-book-cover.png",
+      "categoryId": 3,
+      "authorId": 3,
+      "rating": 4.9,
+      "reviews": 456
+    },
+    {
+      "id": 3,
+      "title": "Kinh tế vi mô cơ bản",
+      "isbn": "978-1111111111",
+      "price": 129000,
+      "discountPrice": 99000,
+      "stockQuantity": 30,
+      "publishDate": "2021-06-10",
+      "description": "Giáo trình kinh tế vi mô dành cho sinh viên và những ai quan tâm",
+      "status": "AVAILABLE",
+      "imageUrl": "/economics-book.png",
+      "categoryId": 2,
+      "authorId": 2,
+      "rating": 4.5,
+      "reviews": 120
+    },
+    {
+      "id": 4,
+      "title": "Phương pháp KonMari",
+      "isbn": "978-2222222222",
+      "price": 85000,
+      "discountPrice": 65000,
+      "stockQuantity": 80,
+      "publishDate": "2021-01-15",
+      "description": "Phương pháp sắp xếp theo phương pháp KonMari của Marie Kondo",
+      "status": "AVAILABLE",
+      "imageUrl": "/vietnamese-literature.jpg",
+      "categoryId": 4,
+      "authorId": 4,
+      "rating": 4.7,
+      "reviews": 340
+    },
+    {
+      "id": 5,
+      "title": "Lịch sử Việt Nam thời kỳ cổ đại",
+      "isbn": "978-3333333333",
+      "price": 150000,
+      "discountPrice": 120000,
+      "stockQuantity": 25,
+      "publishDate": "2020-09-05",
+      "description": "Tập II của bộ lịch sử Việt Nam của tác giả Dương Tự Huy",
+      "status": "AVAILABLE",
+      "imageUrl": "/psychology-book.jpg",
+      "categoryId": 5,
+      "authorId": 5,
+      "rating": 4.6,
+      "reviews": 180
+    },
+    {
+      "id": 6,
+      "title": "Tư duy như một nhà chiến lược",
+      "isbn": "978-4444444444",
+      "price": 110000,
+      "discountPrice": 85000,
+      "stockQuantity": 45,
+      "publishDate": "2021-11-20",
+      "description": "Hướng dẫn tư duy chiến lược cho quản lý",
+      "status": "AVAILABLE",
+      "imageUrl": "/abstract-book-cover.png",
+      "categoryId": 2,
+      "authorId": 2,
+      "rating": 4.4,
+      "reviews": 95
+    },
+    {
+      "id": 7,
+      "title": "Ghi chú tinh thần",
+      "isbn": "978-5555555555",
+      "price": 95000,
+      "discountPrice": 72000,
+      "stockQuantity": 60,
+      "publishDate": "2021-07-12",
+      "description": "Cuốn sách về phát triển tâm lý và tư duy tích cực",
+      "status": "AVAILABLE",
+      "imageUrl": "/vietnamese-literature.jpg",
+      "categoryId": 3,
+      "authorId": 3,
+      "rating": 4.5,
+      "reviews": 210
+    },
+    {
+      "id": 8,
+      "title": "Làm chủ bản thân",
+      "isbn": "978-6666666666",
+      "price": 115000,
+      "discountPrice": 88000,
+      "stockQuantity": 35,
+      "publishDate": "2020-04-08",
+      "description": "Hướng dẫn thực hành tự kiểm soát và phát triển kỹ năng",
+      "status": "AVAILABLE",
+      "imageUrl": "/psychology-book.jpg",
+      "categoryId": 4,
+      "authorId": 4,
+      "rating": 4.7,
+      "reviews": 305
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "bookId": 1,
+      "userId": 1,
+      "comment": "Cuốn sách rất hay, tôi yêu thích nó",
+      "rating": 5,
+      "createdAt": "2024-01-15"
+    },
+    {
+      "id": 2,
+      "bookId": 2,
+      "userId": 2,
+      "comment": "Sách hay nhưng hơi dài",
+      "rating": 4,
+      "createdAt": "2024-01-14"
+    },
+    {
+      "id": 3,
+      "bookId": 1,
+      "userId": 3,
+      "comment": "Rất đáng đọc",
+      "rating": 5,
+      "createdAt": "2024-01-13"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "orderDate": "2024-01-10",
+      "status": "COMPLETED",
+      "totalAmount": 138000,
+      "paymentMethod": "VNPay",
+      "shippingAddress": {
+        "street": "123 Nguyễn Huệ",
+        "city": "TP.HCM",
+        "state": "Quận 1",
+        "postalCode": "700000"
+      }
+    },
+    {
+      "id": 2,
+      "customerId": 1,
+      "orderDate": "2024-01-05",
+      "status": "PENDING",
+      "totalAmount": 79000,
+      "paymentMethod": "Momo",
+      "shippingAddress": {
+        "street": "123 Nguyễn Huệ",
+        "city": "TP.HCM",
+        "state": "Quận 1",
+        "postalCode": "700000"
+      }
+    },
+    {
+      "id": 3,
+      "customerId": 3,
+      "orderDate": "2024-01-08",
+      "status": "COMPLETED",
+      "totalAmount": 65000,
+      "paymentMethod": "COD",
+      "shippingAddress": {
+        "street": "789 Lê Lợi",
+        "city": "TP.HCM",
+        "state": "Quận 1",
+        "postalCode": "700000"
+      }
+    }
+  ],
+  "orderItems": [
+    {
+      "id": 1,
+      "orderId": 1,
+      "bookId": 1,
+      "quantity": 2,
+      "unitPrice": 69000
+    },
+    {
+      "id": 2,
+      "orderId": 2,
+      "bookId": 2,
+      "quantity": 1,
+      "unitPrice": 79000
+    },
+    {
+      "id": 3,
+      "orderId": 3,
+      "bookId": 4,
+      "quantity": 1,
+      "unitPrice": 65000
+    }
+  ],
+  "promotions": [
+    {
+      "id": 1,
+      "name": "Giảm 10% cho sách văn học",
+      "code": "VANHOCDISCOUNT10",
+      "discountPercent": 10,
+      "startDate": "2024-01-01",
+      "endDate": "2024-12-31"
+    },
+    {
+      "id": 2,
+      "name": "Giảm 20% cho đơn hàng trên 500k",
+      "code": "SALE20LARGE",
+      "discountPercent": 20,
+      "startDate": "2024-01-01",
+      "endDate": "2024-12-31"
+    },
+    {
+      "id": 3,
+      "name": "Giảm 15% tất cả sách",
+      "code": "WELCOME15",
+      "discountPercent": 15,
+      "startDate": "2024-01-01",
+      "endDate": "2024-03-31"
+    }
+  ],
+  "wishlists": [
+    {
+      "id": 1,
+      "userId": 1,
+      "bookId": 3
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "bookId": 5
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "bookId": 2
+    }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "items": [
+        {
+          "bookId": 1,
+          "quantity": 1
+        },
+        {
+          "bookId": 4,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "items": [
+        {
+          "bookId": 2,
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}
