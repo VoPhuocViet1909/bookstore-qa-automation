@@ -302,7 +302,7 @@ function HomeContent() {
                               <p className="text-white font-semibold text-sm line-clamp-2">{book.title}</p>
                               <p className="text-white/80 text-xs mt-1">{book.authorNames?.[0]}</p>
                               <div className="mt-2 flex items-center gap-2">
-                                <span className="text-white font-bold text-sm">{book.discountPrice.toLocaleString("vi-VN")}₫</span>
+                                <span className="text-white font-bold text-sm">{(book.discountPrice ?? book.price ?? 0).toLocaleString("vi-VN")}₫</span>
                                 {book.price && book.discountPrice < book.price && (
                                   <span className="text-white/60 text-xs line-through">{book.price.toLocaleString("vi-VN")}₫</span>
                                 )}

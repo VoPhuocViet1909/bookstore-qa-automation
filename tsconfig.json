@@ -9,5 +9,6 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["**/*.ts"]
+  "include": ["api/**/*.ts", "e2e/**/*.ts", "utils/**/*.ts", "*.ts"],
+  "exclude": ["node_modules", "sut"]
 }

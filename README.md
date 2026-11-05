@@ -18,7 +18,7 @@ Bộ kiểm thử tự động cho **NotFound Bookstore**, website bán sách (S
 | Framework | Page Object Model, fixtures, API client, data factory, seed dữ liệu tự động |
 | CI | GitHub Actions: mỗi lần push tự dựng backend (Docker Compose) + frontend, chạy toàn bộ test và lưu HTML report |
 | Báo cáo | Playwright HTML Report (kèm trace, screenshot, video khi fail) |
-| Bug tìm được | **5 bug**, xem [docs/bugs](docs/bugs) |
+| Bug tìm được | **11 bug**, xem [docs/bugs](docs/bugs) |
 
 ## Cấu trúc thư mục
 
@@ -80,3 +80,9 @@ npm run report        # mở HTML report
 | [BUG-003](docs/bugs/BUG-003.md) | Lọc theo khoảng giá trả về sách nằm ngoài khoảng | Medium |
 | [BUG-004](docs/bugs/BUG-004.md) | `sortType` không hợp lệ không bị từ chối (200) | Low |
 | [BUG-005](docs/bugs/BUG-005.md) | Tìm kiếm trả về 500 khi dịch vụ AI không khả dụng | High |
+| [BUG-006](docs/bugs/BUG-006.md) | Trang chủ bị sập khi sách không có giá khuyến mãi (`discountPrice = null`) | High |
+| [BUG-007](docs/bugs/BUG-007.md) | Đặt hàng COD luôn thất bại: lỗi tạo vận đơn GHN làm rollback cả đơn | Critical |
+| [BUG-008](docs/bugs/BUG-008.md) | Frontend báo "Đặt hàng thành công" và xoá giỏ dù backend trả lỗi | High |
+| [BUG-009](docs/bugs/BUG-009.md) | Mật khẩu bị ghi ra console trình duyệt khi đăng nhập | High |
+| [BUG-010](docs/bugs/BUG-010.md) | Sai mật khẩu hiện "Đăng nhập thất bại" thay vì "Sai tên đăng nhập hoặc mật khẩu" | Medium |
+| [BUG-011](docs/bugs/BUG-011.md) | Áp mã giảm giá báo thành công nhưng tổng tiền không giảm | High |

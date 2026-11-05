@@ -101,7 +101,7 @@ export default function Home() {
           </div>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="text-lg font-bold text-red-600">{book.discountPrice.toLocaleString()} đ</span>
+              <span className="text-lg font-bold text-red-600">{(book.discountPrice ?? book.price ?? 0).toLocaleString()} đ</span>
               <span className="text-sm text-gray-400 line-through">{book.price.toLocaleString()} đ</span>
             </div>
             <Button type="primary" block>

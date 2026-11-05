@@ -170,7 +170,7 @@ export function WishlistSection() {
                 </span>
                 {book.discountPrice && book.discountPrice !== book.price && (
                   <span className="text-sm text-muted-foreground line-through">
-                    {book.discountPrice.toLocaleString("vi-VN")}₫
+                    {(book.discountPrice ?? book.price ?? 0).toLocaleString("vi-VN")}₫
                   </span>
                 )}
               </div>

@@ -334,7 +334,7 @@ export default function ProductDetailPage() {
               {/* Price */}
               <div className="mb-6">
                 <div className="flex items-baseline gap-3">
-                  <span className="text-3xl font-bold text-primary">{book.discountPrice.toLocaleString("vi-VN")}₫</span>
+                  <span className="text-3xl font-bold text-primary">{(book.discountPrice ?? book.price ?? 0).toLocaleString("vi-VN")}₫</span>
                   {book.price && (
                     <span className="text-lg text-muted-foreground line-through">
                       {book.price.toLocaleString("vi-VN")}₫
